@@ -3,16 +3,21 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  final num day = 2;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Catalog App"),
+        title: Text("title"),
         backgroundColor: Colors.blue,
+        leading: Icon(Icons.menu),
+        actions: [Icon(Icons.search), Icon(Icons.notifications)],
+        elevation: 5,
+        centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(20),
+          child: Text("Bottom content"),
+        ),
       ),
-      body: Center(child: Text("Welcome to day $day of Flutter learning")),
     );
   }
 }
