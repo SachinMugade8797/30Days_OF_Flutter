@@ -7,16 +7,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("title"),
+        title: Text("Catlog App"),
         backgroundColor: Colors.blue,
         leading: Icon(Icons.menu),
-        actions: [Icon(Icons.search), Icon(Icons.notifications)],
-        elevation: 5,
         centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(20),
-          child: Text("Bottom content"),
-        ),
+        actions: [
+          Icon(Icons.search),
+          Icon(Icons.notifications)
+        ],
       ),
     );
   }
