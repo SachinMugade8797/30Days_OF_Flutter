@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
                       ),
                       child: changeButton
                           ? Icon(Icons.done, color: Colors.white)
