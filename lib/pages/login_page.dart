@@ -11,18 +11,23 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool changeButton = false;
-  final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>(); // track form with seperate key
 
   Future<void> moveToHome(BuildContext context) async {
-    setState(() {
-      changeButton = true;
-    });
-    await Future.delayed(Duration(seconds: 1));
-    // ignore: use_build_context_synchronously
-    await Navigator.pushNamed(context, MyRoutes.homeRoute);
-    setState(() {
-      changeButton = false;
-    });
+    if (_formKey.currentState?.validate() ?? false) {
+      setState(() {
+        changeButton = true;
+      });
+      await Future.delayed(Duration(seconds: 1));
+      // ignore: use_build_context_synchronously
+      await Navigator.pushNamed(
+        context,
+        MyRoutes.homeRoute,
+      ); // handles back to normal login button change
+      setState(() {
+        changeButton = false;
+      });
+    }
   }
 
   @override
@@ -31,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
       color: Colors.white,
       child: SingleChildScrollView(
         child: Form(
-          key: _formKey,
+          key: _formKey, // track form with seperate key
           child: Column(
             children: [
               Image.asset("assets/images/login_image.png", fit: BoxFit.cover),
@@ -53,6 +58,12 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: "Enter Username",
                         labelText: "Username",
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Username Cannot be empty";
+                        }
+                        return null;
+                      },
                       onChanged: (value) {
                         name = value;
                         setState(() {});
@@ -65,6 +76,14 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: "Enter Password",
                         labelText: "Password",
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Password Cannot be empty";
+                        } else if (value.length < 6) {
+                          return "Password length should atleast 6";
+                        }
+                        return null;
+                      },
                     ),
                     SizedBox(height: 30),
 
