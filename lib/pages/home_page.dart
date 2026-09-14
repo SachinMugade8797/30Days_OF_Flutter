@@ -9,17 +9,13 @@ class HomePage extends StatelessWidget {
     num days = 6;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Catlog App", style: TextStyle(color: Colors.white)),
+        title: Text("Catlog App", style: TextStyle(color: Colors.black)),
         // backgroundColor: Colors.deepPurple,
         centerTitle: true,
         elevation: 0.0,
         // actions: [Icon(Icons.search), Icon(Icons.notifications)],
       ),
-      body: Center(
-        child: Container(
-          child: Text("Welcome to $days days of flutter learning"),
-        ),
-      ),
+      body: Center(child: Text("Welcome to $days days of flutter learning")),
       drawer: MyDrawer(),
     );
   }

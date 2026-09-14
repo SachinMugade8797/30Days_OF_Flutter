@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     final imageUrl = "https://sachinmugade8797.github.io/sachin.jpg";
@@ -26,7 +28,7 @@ class MyDrawer extends StatelessWidget {
               leading: Icon(CupertinoIcons.home, color: Colors.white),
               title: Text(
                 "Home",
-                textScaleFactor: 1.2,
+                textScaler: TextScaler.linear(1.2),
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -37,7 +39,7 @@ class MyDrawer extends StatelessWidget {
               ),
               title: Text(
                 "Profile",
-                textScaleFactor: 1.2,
+                textScaler: TextScaler.linear(1.2),
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -45,7 +47,7 @@ class MyDrawer extends StatelessWidget {
               leading: Icon(CupertinoIcons.mail, color: Colors.white),
               title: Text(
                 "Email me",
-                textScaleFactor: 1.2,
+                textScaler: TextScaler.linear(1.2),
                 style: TextStyle(color: Colors.white),
               ),
             ),
