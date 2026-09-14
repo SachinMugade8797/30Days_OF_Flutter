@@ -87,29 +87,30 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height: 30),
 
-                    InkWell(
-                      onTap: () => moveToHome(context),
-                      child: AnimatedContainer(
-                        duration: Duration(seconds: 1),
-                        width: changeButton ? 50 : 150,
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(
-                            changeButton ? 50 : 8,
-                          ),
-                        ),
-                        child: changeButton
-                            ? Icon(Icons.done, color: Colors.white)
-                            : Text(
-                                "Login",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
+                    Material(
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.circular(
+                        changeButton ? 50 : 8,
+                      ),
+                      child: InkWell(
+                        onTap: () => moveToHome(context),
+                        child: AnimatedContainer(
+                          duration: Duration(seconds: 1),
+                          width: changeButton ? 50 : 150,
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(),
+                          child: changeButton
+                              ? Icon(Icons.done, color: Colors.white)
+                              : Text(
+                                  "Login",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
                                 ),
-                              ),
+                        ),
                       ),
                     ),
                   ],
