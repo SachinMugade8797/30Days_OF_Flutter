@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Catlog App", style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.deepPurple,
+        // backgroundColor: Colors.deepPurple,
         centerTitle: true,
         elevation: 0.0,
         // actions: [Icon(Icons.search), Icon(Icons.notifications)],
