@@ -20,12 +20,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> loadData() async {
-    final catalogJson =
-        await rootBundle.loadString("assets/files/catalog.json");
+    await Future.delayed(Duration(seconds: 2));
+    final catalogJson = await rootBundle.loadString(
+      "assets/files/catalog.json",
+    );
     final decodedData = jsonDecode(catalogJson) as Map<String, dynamic>;
     final products = decodedData["products"] as List<dynamic>;
-    CatalogModel.items =
-        products.map((e) => Item.fromJson(e as Map<String, dynamic>)).toList();
+    CatalogModel.items = products
+        .map((e) => Item.fromMap(e as Map<String, dynamic>))
+        .toList();
     setState(() {});
   }
 
@@ -39,14 +42,15 @@ class _HomePageState extends State<HomePage> {
         elevation: 0.0,
         // actions: [Icon(Icons.search), Icon(Icons.notifications)],
       ),
-      body: Padding(
+body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: CatalogModel.items.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(item: CatalogModel.items[index]);
-          },
-        ),
+        child: CatalogModel.items.isNotEmpty
+            ? ListView.builder(
+                itemCount: CatalogModel.items.length,
+                itemBuilder: (context, index) =>
+                    ItemWidget(item: CatalogModel.items[index]),
+              )
+            : const Center(child: CircularProgressIndicator()),
       ),
       drawer: MyDrawer(),
     );
