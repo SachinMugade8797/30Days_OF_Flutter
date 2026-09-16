@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 0.0,
         // actions: [Icon(Icons.search), Icon(Icons.notifications)],
       ),
-body: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: CatalogModel.items.isNotEmpty
             ? ListView.builder(
