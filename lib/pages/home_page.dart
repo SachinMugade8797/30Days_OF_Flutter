@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_first_app/models/catalog.dart';
 import 'package:my_first_app/widgets/drawer.dart';
-import 'package:my_first_app/widgets/item_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,12 +44,53 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: CatalogModel.items.isNotEmpty
-            ? ListView.builder(
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                ),
+                itemBuilder: (context, index) {
+                  final item = CatalogModel.items[index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+
+                    child: GridTile(
+                      header: Container(
+                        padding: const EdgeInsets.all(8),
+                        color: Colors.deepPurple,
+                        alignment: Alignment.center,
+                        child: Text(
+                          item.name,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      footer: Container(
+                        padding: const EdgeInsets.all(8),
+                        color: Colors.white,
+                        alignment: Alignment.center,
+                        child: Text(
+                          " ${item.price}",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      child: Image.network(item.image, fit: BoxFit.cover),
+                    ),
+                  );
+                },
                 itemCount: CatalogModel.items.length,
-                itemBuilder: (context, index) =>
-                    ItemWidget(item: CatalogModel.items[index]),
               )
-            : const Center(child: CircularProgressIndicator()),
+            : Center(child: CircularProgressIndicator()),
       ),
       drawer: MyDrawer(),
     );
