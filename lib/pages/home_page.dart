@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         alignment: Alignment.center,
                         child: Text(
-                          " ${item.price}",
+                          "\$ ${item.price}",
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
